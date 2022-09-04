@@ -1,0 +1,31 @@
+/* jawaban01 */
+table {
+    border-collapse: collapse;
+}
+table tr td {
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid black;
+    width: 100px;
+}
+/* jawaban02 */
+em {
+    font-size: 2rem;
+    text-align: center;
+    display: block;
+    margin: 10px;
+    font-weight: 700;
+}
+img {
+    width: 100px;
+    margin: 10px auto;
+    display: block;
+}
+h1 {
+    font-size: 2rem;
+    margin: 10px;
+}
+p{
+    font-size: 1rem;
+    margin: 10px;
+}
