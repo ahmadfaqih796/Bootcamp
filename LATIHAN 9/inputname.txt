@@ -1,0 +1,48 @@
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+
+
+function BelajarForm() {
+  const [nama, setNama] = useState("John Doe")
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (nama !== "") {
+      console.log("Nama saya adalah " + nama)
+    } else {
+      setMessage("Ups.. harus di isi cui!")
+    }
+  }
+
+  const errHandleNama = (e) => {
+    if (e.target.value === "") {
+      setMessage("Ups.. harus di isi cui!")
+    } else {
+      setMessage("")
+    }
+  }
+
+  const handleChange = (e) => {
+    setNama(e.target.value);
+    errHandleNama(e);
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Masukan nama:</label>
+      <input 
+        type="text"
+        value={nama}
+        onChange={handleChange}
+      />
+      <small>{message}</small>
+      <p>Nama saya: {nama}</p>
+      <button type='submit'>Save</button>
+    </form>
+  )
+}
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+);
+
+root.render(<BelajarForm />);

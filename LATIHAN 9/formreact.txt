@@ -1,0 +1,71 @@
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+
+
+function UserForm() {
+  const [data, setData] = useState({})
+  
+  const handleChange = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+    setData((values) => ({...values, [key]: value}))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Username:</label>
+        <input 
+          onChange={handleChange}
+          value={data.username || ""}
+          name="username" 
+          type="text"
+        />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input
+          onChange={handleChange}
+          value={data.email || ""}
+          name="email" 
+          type="email" />
+      </div>
+      <div>
+        <label>About:</label>
+        <textarea 
+          onChange={handleChange}
+          value={data.about || ""}
+          name="about" 
+         />
+      </div>
+      <div>
+        <label>Hobby:</label>
+        <select value={data.hobby || ""} name="hobby" onChange={handleChange}>
+          <option value="Tidur">Tidur</option>
+          <option value="Makan">Makan</option>
+          <option value="Minum">Minum</option>
+          <option value="Mancing">Mancing</option>
+        </select>
+      </div>
+
+      <button type='submit'>Simpan</button>
+
+      <p>Namanya: {data.username} email: {data.email}</p>
+      <p>
+        <small>{data.about}</small>
+      </p>
+      <h4>Hobinya {data.hobby}</h4>
+    </form>
+  )
+}
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+);
+
+root.render(<UserForm />);
